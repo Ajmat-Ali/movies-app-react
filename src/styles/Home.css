@@ -76,8 +76,8 @@ header a {
   left: 0;
   width: 100%;
   height: 100%;
-  /* background-color: rgba(255, 10, 10, 0.5); */
-  z-index: 10001;
+  background-color: rgba(255, 10, 10, 0.5);
+  z-index: 10002;
   overflow-x: hidden;
   transition: 0.5s;
   overflow-x: hidden;
@@ -153,6 +153,74 @@ header a {
 .sidebar_link > div:hover {
   color: teal;
 }
+.movies_list {
+  position: sticky;
+  top: 50px;
+  background-color: #d3c5c5;
+  padding: 20px;
+}
+
+.movies_list div {
+  width: 100%;
+  margin: auto;
+  text-align: center;
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  flex-wrap: wrap;
+  /* margin-top: 20px; */
+}
+.movies_list div button {
+  font-size: 14px;
+  border: none;
+}
+.display_data {
+  margin-top: 20px;
+}
+.display_data > div {
+  width: 80%;
+  margin: auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+.display_data > div > div {
+  text-align: center;
+}
+.display_data > div > div img {
+  width: 70%;
+  height: 200px;
+  border-radius: 2px;
+}
+.display_data > div > div p {
+  font-weight: bold;
+  margin: 7px;
+}
+.display_data > div > div img + p {
+  margin-top: 10px;
+  height: 50px;
+}
+.display_data > div > div button {
+  width: 75%;
+}
+
+.parent_pagination {
+  width: 100%;
+}
+.pagination {
+  width: 70%;
+  margin: auto;
+  text-align: center;
+  display: block;
+}
+.pagination button {
+  padding: 10px 13px 10px 13px;
+  color: rgb(13, 93, 183);
+}
+.pagination button.active {
+  background-color: rgb(13, 93, 183);
+  color: rgb(255, 255, 255);
+}
 
 /* ///////////////////////////////////////////////////  992px */
 @media all and (max-width: 992px) {
@@ -160,7 +228,6 @@ header a {
     /* border: 2px solid red; */
     width: 73%;
   }
-
   .navbar-brand {
     text-align: center;
     width: 12%;
@@ -177,6 +244,25 @@ header a {
     width: 95%;
     justify-content: space-between;
   }
+  .display_data > div {
+    width: 90%;
+    margin: auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+  .display_data > div > div {
+    text-align: center;
+    width: 100%;
+  }
+  .display_data > div > div img {
+    width: 100%;
+    height: 200px;
+    border-radius: 2px;
+  }
+  .display_data > div > div p {
+    font-size: 15px;
+  }
 }
 /* //////////////////////////////////////////////   768px */
 @media screen and (max-width: 768px) {
@@ -185,7 +271,6 @@ header a {
     margin-right: 20px;
     margin-left: 10px;
   }
-
   .navbar-brand {
     width: 25%;
   }
@@ -208,6 +293,34 @@ header a {
     width: 300px;
     display: flex;
     justify-content: space-between;
+  }
+  .movies_list div {
+    width: 95%;
+    margin: auto;
+    text-align: center;
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  .movies_list div button {
+    font-size: 14px;
+    border: none;
+  }
+  .display_data > div {
+    grid-template-columns: repeat(2, 1fr);
+    width: 80%;
+  }
+  .display_data > div > div img {
+    width: 80%;
+    height: 250px;
+    border-radius: 2px;
+  }
+  .display_data > div > div p {
+    font-size: 14px;
+  }
+  .display_data > div > div button {
+    width: 80%;
   }
 }
 
@@ -240,5 +353,54 @@ header a {
     width: 70%;
     display: flex;
     justify-content: space-between;
+  }
+  .display_data > div {
+    grid-template-columns: repeat(1, 1fr);
+    width: 80%;
+  }
+  .display_data > div > div {
+    width: 300px;
+    margin: auto;
+  }
+  .display_data > div > div img {
+    width: 90%;
+    height: 250px;
+    border-radius: 2px;
+  }
+  .display_data > div > div p {
+    font-size: 14px;
+  }
+  .display_data > div > div button {
+    width: 80%;
+  }
+  .pagination {
+    width: 100%;
+    margin: auto;
+    text-align: center;
+    display: block;
+  }
+  .pagination button {
+    padding: 7px 10px 7px 10px;
+    color: rgb(13, 93, 183);
+  }
+}
+
+@media all and (max-width: 380px) {
+  .display_data > div {
+    width: 90%;
+  }
+  .display_data > div > div {
+    width: 100%;
+  }
+  .display_data > div > div img {
+    width: 100%;
+    height: 200px;
+    border-radius: 2px;
+  }
+  .display_data > div > div p {
+    font-size: 14px;
+  }
+  .display_data > div > div button {
+    width: 100%;
   }
 }
