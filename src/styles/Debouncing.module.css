@@ -1,0 +1,144 @@
+.message {
+  text-align: center;
+  background-color: red;
+  color: white;
+  width: 30%;
+  margin: auto;
+  margin-top: 20px;
+  padding: 20px 0px 20px 0px;
+  border-radius: 10px;
+}
+.display_data {
+  margin-top: 20px;
+  margin-bottom: 80px;
+  background-color: rgb(138, 198, 138);
+  padding: 30px 0px 30px 0px;
+}
+.display_data > div {
+  width: 80%;
+  margin: auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+.display_data > div > div {
+  text-align: center;
+  background-color: white;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px,
+    rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px,
+    rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+  padding: 10px;
+  border-radius: 7px;
+}
+.display_data > div > div img {
+  width: 70%;
+  height: 200px;
+  border-radius: 2px;
+}
+.display_data > div > div p {
+  font-weight: bold;
+  margin: 7px;
+}
+.display_data > div > div img + p {
+  margin-top: 10px;
+  height: 50px;
+}
+.display_data > div > div button {
+  width: 75%;
+}
+
+@media all and (max-width: 992px) {
+  .display_data > div {
+    width: 90%;
+    margin: auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+  .display_data > div > div {
+    text-align: center;
+    width: 100%;
+  }
+  .display_data > div > div img {
+    width: 100%;
+    height: 200px;
+    border-radius: 2px;
+  }
+  .display_data > div > div p {
+    font-size: 15px;
+  }
+}
+
+@media all and (max-width: 767px) {
+  .display_data > div {
+    grid-template-columns: repeat(2, 1fr);
+    width: 80%;
+  }
+  .display_data > div > div img {
+    width: 80%;
+    height: 250px;
+    border-radius: 2px;
+  }
+  .display_data > div > div p {
+    font-size: 14px;
+  }
+  .display_data > div > div button {
+    width: 80%;
+  }
+  .message {
+    width: 50%;
+    margin: auto;
+    margin-top: 20px;
+    padding: 14px 0px 14px 0px;
+    border-radius: 10px;
+  }
+}
+
+@media all and (max-width: 557px) {
+  .display_data > div {
+    grid-template-columns: repeat(1, 1fr);
+    width: 80%;
+  }
+  .display_data > div > div {
+    width: 300px;
+    margin: auto;
+  }
+  .display_data > div > div img {
+    width: 90%;
+    height: 250px;
+    border-radius: 2px;
+  }
+  .display_data > div > div p {
+    font-size: 14px;
+  }
+  .display_data > div > div button {
+    width: 80%;
+  }
+  .message {
+    width: 90%;
+    margin: auto;
+    margin-top: 20px;
+    padding: 12px 0px 12px 0px;
+    border-radius: 10px;
+  }
+}
+
+@media all and (max-width: 380px) {
+  .display_data > div {
+    width: 90%;
+  }
+  .display_data > div > div {
+    width: 100%;
+  }
+  .display_data > div > div img {
+    width: 100%;
+    height: 200px;
+    border-radius: 2px;
+  }
+  .display_data > div > div p {
+    font-size: 14px;
+  }
+  .display_data > div > div button {
+    width: 100%;
+  }
+}

@@ -13,9 +13,8 @@ import {
 } from "react-icons/fa";
 import "../styles/Home.css";
 
-////////////////////////////////////////////////////////
-
-//////////////////////////////////////////////////////////
+// Import Local Component
+import Debouncing from "../component/Debouncing";
 
 const Navbar = () => {
   const [showMenu, setShowMenu] = useState(false);
@@ -109,19 +108,59 @@ const Navbar = () => {
         );
         setData(response.data.Search);
         setTotalResponse(response.data.totalResults);
+        setDebouncedSearchTerm("");
       } else {
         const response = await axios.get(
           `https://www.omdbapi.com/?s=all&apikey=e9868d94&t&type=${category.toLowerCase()}&page=${currentPage}`
         );
         setData(response.data.Search);
         setTotalResponse(response.data.totalResults);
+        setDebouncedSearchTerm("");
       }
     } catch (error) {
       console.error("Error fetching data:", error);
     }
   };
   // ...........................................................
-  console.log(totalResponse);
+  /////////////////////////Debouncing/////////////////////////////////////
+  const [searchMovie, setSearchMovie] = useState("");
+  const [searchData, setSearchData] = useState(null);
+  const [debouncedSearchTerm, setDebouncedSearchTerm] = useState(null);
+  const [isTyping, setIsTyping] = useState(false); // State to track if user is typing
+  const Api_key = "e9868d94&t";
+
+  const handleInputChange = (event) => {
+    setSearchMovie(event.target.value);
+    setIsTyping(true); // User is typing
+  };
+
+  useEffect(() => {
+    const debounceTimeout = setTimeout(() => {
+      setDebouncedSearchTerm(searchMovie);
+      setIsTyping(false); // User stopped typing
+    }, 600); // Delay time in milliseconds, adjust as needed
+
+    return () => clearTimeout(debounceTimeout);
+  }, [searchMovie]);
+
+  useEffect(() => {
+    const makeApi = async () => {
+      try {
+        const response = await axios.get(
+          `https://www.omdbapi.com/?apikey=${Api_key}&s=${debouncedSearchTerm}`
+        );
+        setSearchData(response.data.Search);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    };
+
+    if (debouncedSearchTerm && !isTyping) {
+      // Check if user stopped typing
+      makeApi();
+    }
+  }, [debouncedSearchTerm, isTyping]);
+  //////////////////////////////////////////////////////////////
   return (
     <div className="home_page">
       <header>
@@ -143,8 +182,14 @@ const Navbar = () => {
                   type="text"
                   className="form-control "
                   placeholder="Search Movies"
+                  value={searchMovie}
+                  onChange={handleInputChange}
+                  onClick={() => setIsTyping(true)}
                 />
-                <button className="btn btn-light text-dark ">
+                <button
+                  className="btn btn-light text-dark "
+                  onClick={handleInputChange}
+                >
                   {" "}
                   <span>Search</span>
                 </button>
@@ -225,6 +270,12 @@ const Navbar = () => {
           ) : (
             ""
           )}
+        </div>
+        <div>
+          <Debouncing
+            searchData={searchData}
+            debouncedSearchTerm={debouncedSearchTerm}
+          />
         </div>
         <div className="display_data">
           <div>
