@@ -197,7 +197,7 @@ const Navbar = () => {
               <div className="login">
                 <p>
                   <FaUser size={22} />
-                  Login/signin
+                  Login
                 </p>
               </div>
               <div className="icons">
@@ -228,7 +228,8 @@ const Navbar = () => {
                 <a href="#">
                   <h2>Logo</h2>
                 </a>
-                <a href="#">Login/Signin</a>
+                <a href="#">Login</a>
+                <a href="#">Register</a>
                 <div className="sidebar_link">
                   <div>
                     <FaUser style={{ marginRight: "10px" }} />

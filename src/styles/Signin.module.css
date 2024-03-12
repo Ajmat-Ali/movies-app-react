@@ -1,0 +1,46 @@
+.parent {
+  margin-top: 40px;
+}
+.parent form h2 {
+  text-align: center;
+}
+.parent form {
+  width: 50%;
+  margin: auto;
+  background-color: rgb(28, 67, 111);
+  color: white;
+  padding: 30px 0px 30px 0px;
+  border-radius: 20px;
+}
+/* .parent form div {
+  border: 1px solid red;
+} */
+.parent form div dl {
+  /* border: 2px solid black; */
+  width: 300px;
+  margin: auto;
+  margin-bottom: 20px;
+}
+
+.parent form div dl dt {
+  margin-bottom: 10px;
+}
+
+@media all and (max-width: 768px) {
+  .parent form {
+    width: 70%;
+  }
+}
+
+@media all and (max-width: 492px) {
+  .parent form {
+    width: 90%;
+  }
+  .parent form div dl {
+    width: 100%;
+  }
+  .parent form div {
+    width: 90%;
+    margin: auto;
+  }
+}
