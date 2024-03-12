@@ -1,4 +1,6 @@
 import { useState, useEffect, useRef } from "react";
+import { Link } from "react-router-dom";
+
 import styles from "../styles/Profile.module.css";
 
 function Profile() {
@@ -150,7 +152,9 @@ function Profile() {
         <button className="btn btn-info" onClick={handleEditSave}>
           {isEditing ? "Save" : "Edit"}
         </button>
-        <button className="btn btn-secondary ms-4">Back</button>
+        <Link to="/">
+          <button className="btn btn-secondary ms-4">Back</button>
+        </Link>
       </div>
     </div>
   );

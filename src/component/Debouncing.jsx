@@ -20,7 +20,6 @@ function Debouncing({ searchData, debouncedSearchTerm }) {
               </div>
             );
           })}
-        {console.log("Search Data --> ", searchData)}
       </div>
     </div>
   );

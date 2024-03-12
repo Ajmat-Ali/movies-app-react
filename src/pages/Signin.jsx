@@ -1,8 +1,13 @@
 import styles from "../styles/Signin.module.css";
+import { AuthContectProvider } from "../context/AuthContext";
 
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 
 function Signin() {
+  const { auth, setAuth } = useContext(AuthContectProvider);
+  const navigate = useNavigate();
+
   const [userData, setUserData] = useState({
     name: "",
     mail: "",
@@ -12,7 +17,6 @@ function Signin() {
   function handleChange(e) {
     const { value, name } = e.target;
     setUserData({ ...userData, [name]: value });
-    console.log(userData);
   }
 
   function handleSubmit(e) {
@@ -25,6 +29,9 @@ function Signin() {
       mail: "",
       password: "",
     });
+    setAuth(true);
+
+    navigate("/account");
   }
 
   return (
@@ -87,7 +94,13 @@ function Signin() {
         </div>
         <div className="text-center">
           {" "}
+          <Link to="/">
+            <button className="btn btn-link me-4 text-white">Back</button>
+          </Link>
           <input type="submit" value="Register" className="btn btn-success" />
+          <Link to="/login">
+            <button className="btn btn-primary ms-4">Login</button>
+          </Link>
         </div>
       </form>
     </div>

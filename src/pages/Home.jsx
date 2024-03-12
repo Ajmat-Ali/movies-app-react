@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import axios from "axios";
 import {
   FaBars,
@@ -11,13 +11,17 @@ import {
   FaThumbsUp,
   FaVideo,
 } from "react-icons/fa";
-import "../styles/Home.css";
+import { Link } from "react-router-dom";
 
 // Import Local Component
+import "../styles/Home.css";
 import Debouncing from "../component/Debouncing";
+import { AuthContectProvider } from "../context/AuthContext";
 
 const Navbar = () => {
   const [showMenu, setShowMenu] = useState(false);
+
+  const { auth, setAuth } = useContext(AuthContectProvider);
 
   const toggleMenu = () => {
     setShowMenu(!showMenu);
@@ -196,24 +200,26 @@ const Navbar = () => {
               </div>
               <div className="login">
                 <p>
-                  <FaUser size={22} />
-                  Login
+                  <Link to={auth ? "/login" : "register"}>
+                    <FaUser size={22} />
+                    <span>{auth ? "Login" : "Register"}</span>
+                  </Link>
                 </p>
               </div>
               <div className="icons">
-                <a href="#">
+                <Link to="/cart">
                   <span>
                     <FaShoppingCart size={22} />
                   </span>
-                </a>{" "}
-                <a href="#">
+                </Link>
+                <Link to="/liked">
                   <span>
                     <FaHeart size={22} />
                   </span>
-                </a>{" "}
-                <a href="#">
-                  <span>Profile</span>
-                </a>
+                </Link>
+                <Link to="/account">
+                  <FaUser size={20} /> <span>Account</span>
+                </Link>
               </div>
             </div>
           </div>
@@ -228,24 +234,33 @@ const Navbar = () => {
                 <a href="#">
                   <h2>Logo</h2>
                 </a>
-                <a href="#">Login</a>
-                <a href="#">Register</a>
+                <Link to={auth ? "/login" : "/register"}>
+                  {auth ? "Login" : "Register"}
+                </Link>
                 <div className="sidebar_link">
                   <div>
-                    <FaUser style={{ marginRight: "10px" }} />
-                    Account
+                    <Link to="/register">
+                      <FaUser style={{ marginRight: "10px" }} />
+                      Account
+                    </Link>
                   </div>
                   <div>
-                    <FaHistory style={{ marginRight: "10px" }} />
-                    History
+                    <Link to="/history">
+                      <FaHistory style={{ marginRight: "10px" }} />
+                      History
+                    </Link>
                   </div>
                   <div>
-                    <FaClock style={{ marginRight: "10px" }} />
-                    Watch Later
+                    <Link to="/watch_later">
+                      <FaClock style={{ marginRight: "10px" }} />
+                      Watch Later
+                    </Link>
                   </div>
                   <div>
-                    <FaThumbsUp style={{ marginRight: "10px" }} />
-                    Liked Movies
+                    <Link to="/liked">
+                      <FaThumbsUp style={{ marginRight: "10px" }} />
+                      Liked Movies
+                    </Link>
                   </div>
                 </div>
               </div>
